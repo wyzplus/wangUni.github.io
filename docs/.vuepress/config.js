@@ -21,6 +21,7 @@ module.exports = {
       nav: [
           { text: '首页', link: '/', icon: 'reco-home' },
           { text: '时间轴', link: '/timeline/', icon: 'reco-date' },
+          { text: '留言板', link: '/messageboard/', icon: 'reco-suggestion' },
       ],
       blogConfig: {
         category: {
@@ -38,7 +39,8 @@ module.exports = {
       valineConfig: {
         appId: 'dnY20G2hJaf1K4GSyzb5cb5c-gzGzoHsz',
           appKey: 'FoBlPtlb4Dttee9H480Te4J8',
-          avatar: 'mp'
+          avatar: 'mp',
+          placeholder: 'Please leave a message'
       },
       codeTheme: 'okaidia'
       
