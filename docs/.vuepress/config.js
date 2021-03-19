@@ -3,7 +3,7 @@ module.exports = {
   keywords: 'Universe blog',
   description: "Welcome to my universe",
   repo: 'https://github.com/WangUni/wangUni.github.io',
-    base: '/blog/',
+  base: '/',
   theme: 'reco',
     head: [
         ['link', { rel: 'icon', href: '/favicon.ico' }],
