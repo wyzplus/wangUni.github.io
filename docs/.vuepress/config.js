@@ -7,7 +7,8 @@ module.exports = {
   theme: 'reco',
     head: [
         ['link', { rel: 'icon', href: '/favicon.ico' }],
-        ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
+        ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }],
+        
     ],
   lastUpdated: 'Last Updated',
   themeConfig: {
@@ -20,8 +21,7 @@ module.exports = {
       lastUpdated: 'Last Updated',
       nav: [
           { text: '首页', link: '/', icon: 'reco-home' },
-          { text: '时间轴', link: '/timeline/', icon: 'reco-date' },
-          { text: '留言板', link: '/messageboard/', icon: 'reco-suggestion' },
+          { text: '时间轴', link: '/timeline/', icon: 'reco-date' }
       ],
       blogConfig: {
         category: {
