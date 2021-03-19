@@ -1,36 +1,41 @@
 module.exports = {
-  title: 'lhs的个人博客',  //标题
-  keywords: '前端开发',
-  description: '前端开发 lhs的个人博客',
-  repo: 'https://github.com/zeroonbush/blog.git',  //仓库地址
-  base: '/blog/',  // 配合部署项目
-  head: [
-      ['link', { rel: 'icon', href: '/favicon.ico' }]
-  ],
+  title: "Universe's Blog",
+  keywords: 'Universe blog',
+  description: "Welcome to my universe",
+  repo: 'https://github.com/WangUni/wangUni.github.io',
+    base: '/blog/',
+  theme: 'reco',
+    head: [
+        ['link', { rel: 'icon', href: '/favicon.ico' }],
+        ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
+    ],
   lastUpdated: 'Last Updated',
-  themeConfig: {  //主题配置
-      logo: '/img/logo.png',
-      nav: [  //导航栏
-          { text: '首页', link: '/' },
-          { text: 'JS', link: '/js_docs/' },
-          { text: 'CSS', link: '/css_docs/' },
-          { text: 'Vue', link: '/vue_docs/' },
-          { text: 'React', link: '/react_docs/' },
-          {
-              text: '2020',
-              ariLabel: '2020',
-              items: [  //多级导航栏
-                  { text: 'May', link: '/2020/5/' },
-                  { text: 'June', link: '/2020/6/' }
-              ]
-          },
-          { text: 'github', link: 'https://github.com/zeroonbush/blog.git' }
+  themeConfig: {
+    logo: '/img/portrait.jpg',
+      type: 'blog',
+      author: 'YuZhou',
+      authorAvatar: '/img/portrait.jpg',
+      modePicker: false,
+      startYear: '2020',
+      lastUpdated: 'Last Updated',
+      nav: [
+          { text: '首页', link: '/', icon: 'reco-home' },
+          { text: '时间轴', link: '/timeline/', icon: 'reco-date' },
       ],
-      sidebar: {  //侧边拦
-          '/2020/': [
-              ['/2020/5/', '5月份'],
-              ['/2020/6/', '6月份']
-          ]
-      }
-  }
+      blogConfig: {
+        category: {
+          location: 2,     // 在导航栏菜单中所占的位置，默认2
+          text: '分类' // 默认文案 “分类”
+        },
+        tag: {
+          location: 3,     // 在导航栏菜单中所占的位置，默认3
+          text: '标签'      // 默认文案 “标签”
+        },
+        socialLinks: [     // 信息栏展示社交信息
+          { icon: 'reco-github', link: 'https://github.com/WangUni' }
+        ]
+      },
+      codeTheme: 'okaidia'
+      
+    },
 }
