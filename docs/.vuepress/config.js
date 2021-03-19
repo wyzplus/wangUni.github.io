@@ -3,7 +3,7 @@ module.exports = {
   keywords: 'Universe blog',
   description: "Welcome to my universe",
   repo: 'https://github.com/WangUni/wangUni.github.io',
-  base: './',
+//   base: './',
   theme: 'reco',
     head: [
         ['link', { rel: 'icon', href: '/favicon.ico' }],
@@ -34,6 +34,11 @@ module.exports = {
         socialLinks: [     // 信息栏展示社交信息
           { icon: 'reco-github', link: 'https://github.com/WangUni' }
         ]
+      },
+      valineConfig: {
+        appId: 'dnY20G2hJaf1K4GSyzb5cb5c-gzGzoHsz',
+          appKey: 'FoBlPtlb4Dttee9H480Te4J8',
+          avatar: 'mp'
       },
       codeTheme: 'okaidia'
       
