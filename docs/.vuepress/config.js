@@ -3,13 +3,13 @@ module.exports = {
   keywords: 'Universe blog',
   description: "Welcome to my universe",
   repo: 'https://github.com/WangUni/wangUni.github.io',
-  base: '/blog/',
-  theme: 'reco',
+  base: './',  // 本地运行需要注释（发布时候使用）
+  theme: 'recow',
     head: [
         ['link', { rel: 'icon', href: '/favicon.ico' }],
         ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }],
         
-    ],
+  ],
   lastUpdated: 'Last Updated',
   themeConfig: {
     logo: '/img/portrait.jpg',
@@ -17,7 +17,8 @@ module.exports = {
       author: 'YuZhou',
       authorAvatar: '/img/portrait.jpg',
       modePicker: false,
-      startYear: '2020',
+    startYear: '2020',
+    subSidebar: 'auto',
       lastUpdated: 'Last Updated',
       nav: [
           { text: '首页', link: '/', icon: 'reco-home' },
