@@ -3,12 +3,13 @@ module.exports = {
   keywords: 'Universe blog',
   description: "Welcome to my universe",
   repo: 'https://github.com/WangUni/wangUni.github.io',
-  // base: './',
+  // base: './',  // 本地运行需要注释（发布时候使用）
   theme: 'reco',
     head: [
         ['link', { rel: 'icon', href: '/favicon.ico' }],
-        ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
-    ],
+        ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }],
+        
+  ],
   lastUpdated: 'Last Updated',
   themeConfig: {
       logo: '/img/portrait.jpg',
@@ -16,11 +17,12 @@ module.exports = {
       author: 'YuZhou',
       authorAvatar: '/img/portrait.jpg',
       modePicker: false,
-      startYear: '2020',
+    startYear: '2020',
+    subSidebar: 'auto',
       lastUpdated: 'Last Updated',
       nav: [
           { text: '首页', link: '/', icon: 'reco-home' },
-          { text: '时间轴', link: '/timeline/', icon: 'reco-date' },
+          { text: '时间轴', link: '/timeline/', icon: 'reco-date' }
       ],
       blogConfig: {
         category: {
@@ -34,6 +36,12 @@ module.exports = {
         socialLinks: [     // 信息栏展示社交信息
           { icon: 'reco-github', link: 'https://github.com/WangUni' }
         ]
+      },
+      valineConfig: {
+        appId: 'dnY20G2hJaf1K4GSyzb5cb5c-gzGzoHsz',
+          appKey: 'FoBlPtlb4Dttee9H480Te4J8',
+          avatar: 'mp',
+          placeholder: 'Please leave a message'
       },
       codeTheme: 'okaidia',
       friendLink: [
@@ -49,8 +57,9 @@ module.exports = {
           logo: '/img/portrait.jpg',
           link: 'https://makeuptest.maoye.cn/#/login'
         }
-      ],
-      subSidebar: 'auto'//在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
-      
+      ]
     },
+    markdown: {
+      lineNumbers: true
+    }
 }
