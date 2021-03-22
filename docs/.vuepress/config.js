@@ -3,7 +3,7 @@ module.exports = {
   keywords: 'Universe blog',
   description: "Welcome to my universe",
   repo: 'https://github.com/WangUni/wangUni.github.io',
-  base: './',
+  // base: './',
   theme: 'reco',
     head: [
         ['link', { rel: 'icon', href: '/favicon.ico' }],
@@ -11,7 +11,7 @@ module.exports = {
     ],
   lastUpdated: 'Last Updated',
   themeConfig: {
-    logo: '/img/portrait.jpg',
+      logo: '/img/portrait.jpg',
       type: 'blog',
       author: 'YuZhou',
       authorAvatar: '/img/portrait.jpg',
@@ -35,7 +35,22 @@ module.exports = {
           { icon: 'reco-github', link: 'https://github.com/WangUni' }
         ]
       },
-      codeTheme: 'okaidia'
+      codeTheme: 'okaidia',
+      friendLink: [
+        {
+          title: 'CRM',
+          desc: 'test',
+          logo: "/img/portrait.jpg",
+          link: 'https://myhtest.maoye.cn/'
+        },
+        {
+          title: 'maoM',
+          desc: 'test',
+          logo: '/img/portrait.jpg',
+          link: 'https://makeuptest.maoye.cn/#/login'
+        }
+      ],
+      subSidebar: 'auto'//在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
       
     },
 }

@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "vuepress dev docs",
+    "dev": "vuepress dev docs --temp .temp",
     "build": "vuepress build docs",
     "deploy": "bash deploy.sh"
   },
   "devDependencies": {
     "vuepress": "^1.8.2",
-    "vuepress-theme-reco": "^1.6.6"
+    "vuepress-theme-reco": "^1.6.6",
+    "vuepress-theme-recow": "^1.6.6"
   }
 }
