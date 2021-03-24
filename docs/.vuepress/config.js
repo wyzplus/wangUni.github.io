@@ -48,13 +48,13 @@ module.exports = {
         {
           title: 'CRM',
           desc: 'test',
-          logo: "/img/portrait.jpg",
+          logo: "/img/M.jpg",
           link: 'https://myhtest.maoye.cn/'
         },
         {
           title: 'maoM',
           desc: 'test',
-          logo: '/img/portrait.jpg',
+          logo: '/img/M.jpg',
           link: 'https://makeuptest.maoye.cn/#/login'
         }
       ]
