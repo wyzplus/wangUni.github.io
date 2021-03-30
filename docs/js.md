@@ -1,5 +1,5 @@
 ---
-    title: JS面试点（持续更新中......）
+    title: 【JS】面试点（持续更新中......）
     date: 2021-03-22 15:17:55
     author: lysan
     categories:
@@ -62,8 +62,8 @@
 ### :point_right:ES6新特性
 - 模板字符串； 
 >`${key}`
-- `const,let`，区别；
->`let`声明的变量可以重新赋值，不能在统一作用域重新声明；`const`声明的变量必须初始化，无法重新赋值
+- `const,let`；
+>区别：`let`声明的变量可以重新赋值，不能在统一作用域重新声明；`const`声明的变量必须初始化，无法重新赋值
 - 对象和数组的解构赋值；
 ```js
     //解构数组
@@ -200,17 +200,131 @@
 ::: tip
 计算字符串，并执行其中的js代码
 :::
+**************************************************
 ### :point_right:闭包
 ::: tip
 - 闭包：能够读取其他函数内部变量的函数
 - 使用：在一个函数内部创建另一个函数
 - 用处：读取其他函数的变量值，让这些变量始终保存在内存中
+- 使用场景：给对象设置私有变量并且利用特权方法去访问私有属性
 - 缺点：会引起内存泄露（引用无法销毁，一直存在）
 :::
+****************************************************
 ### :point_right:JSONP和Ajax的区别
 ::: tip
 - Ajax的核心是通过xmlHttpRequest获取非本页内容
 - jsonp的核心是动态添加script标签调用服务器提供的js脚本
-- 
-
+- jsonp只支持get请求，Ajax可支持get、post请求
+:::
+*****************************************************
+### :point_right:JavaScript的同源策略
+::: tip
+协议、域名、端口相同，同源策略是一种安全协议，指一段脚本只能读取来自同一来源的窗口和文档的属性
+:::
+**************************************************
+### :point_right:事件冒泡和事件委托
+::: tip
+- 事件冒泡：一个元素接收到事件的时候，会把接收到的事件传递给父级，一直到window。阻止事件冒泡可使用event.stopPropagation（）
+- 事件委托：把事件给最外层的元素，自己不实现逻辑，由最外层元素来处理
+:::
+****************************************************
+### :point_right:js延迟加载的方式
+::: tip
+- defer，`<script src=”test.js” defer=”defer”></script>`，立即下载，但是会等到整个页面解析完成后再执行；
+- async，`<script src=”test.js” async></script>`，不让页面等待脚本下载和执行（异步下载），但是无法控制加载的顺序；
+- 动态创建script标签
+- 使用定时器延迟
+- 让js最后加载
+:::
+*******************************************************
+### :point_right:promise和async
+::: tip
+- async/await是基于promise实现的，不能用于普通的回调函数
+- async/await使异步代码看起来更像同步代码
+- async/await和promise一样，是非阻塞的
+:::
+::: tip 区别
+- 函数前面多了async。await只能用在async定义的函数内。
+- async/await更节约代码。不需要.then，不需要写匿名函数处理promise的resolve的值，不需要定义多余的data变量，避免了嵌套代码。
+- async/await让try/catch可以同时处理同步和异步错误。try/catch不能处理JSON.parse的错误，因为在promise中。此时需要.catch，这样的错误处理代码非常冗余。
+- 条件语句
+```js
+    //该举个栗子了
+    const makeRequest = ()=>{
+        return getJSON().then( data => {
+            if(data.needsAnotherRequest){
+                return makeAnotherRequest(data).then( moreData => {
+                    console.log(moreData)
+                    return moreData;
+                })
+            }else{
+                console.log(data)
+                return data;
+            }
+        })
+    }
+    //将以上代码 使用async/await改写
+    const makeRequest = async()=>{
+        const data = await getJSON();
+        if(data.needsAnotherRequest){
+            const moreData = await makeAnotherRequest();
+            console.log(moreData)
+            return moreData
+        }else{
+            console.log(data)
+            return data;
+        }
+    }
+```
+:::
+*************************************************************
+### :point_right:==和===的区别，什么时候用==
+::: tip
+- ==判断转换后的值是否相等
+- ===判断值和类型是否完全相等
+- 不需要判断类型时使用==
+:::
+**********************************************************
+### :point_right:如何判断两个对象
+::: tip
+- 判断两个类型是否是对象
+- 判断两个对象的key的长度是否一致
+- 判断value值得数据类型，根据不同数据类型做比较
+    - 是对象，重复以上步骤
+    - 是数组，转字符串比较
+    - 是基本类型，直接判断
+:::
+********************************************************
+### :point_right:js为什么要区分微任务和宏任务
+::: tip
+- js是单线程的，但是区分同步和异步
+- 微任务和宏任务都属于异步任务，他们都属于一个队列
+- 宏任务一般是：script，setTimeot，setInterval，setImmediates
+- 微任务：原生promise
+- 遇到微任务先执行微任务，执行完后如果没有微任务，就执行下一个宏任务
+:::
+********************************************************
+### :point_right:promise和setTimeout执行的顺序
+::: tip
+promise是微任务，先执行promise
+:::
+********************************************************
+### :point_right:AMD、CMD、和common.js的理解
+>都是js模块化的规范
+>common.js是服务端js模块化的规范，node.js就是这种规范的实现，是同步的
+>AMD（异步模块定义）和CMD（通用模块定义）都是浏览器端js模块化的规范。requirejs遵循的是AMD，seajs遵循的是CMD
+- common.js是一个单独的文件。加载模块使用require方法，该方法读取一个文件并执行，最后返回该文件的exports对象
+- AMD（异步模块定义），通过define方法定义模块，通过require方法加载模块，requirejs实现了这种规范
+- CMD（通用模块定义），是seajs在推广过程中对模块定义的规范化产出
+********************************************************
+### :point_right:深拷贝、浅拷贝
+::: tip 浅拷贝的方法：
+- for...in只循环第一层
+- object.assign
+- 直接用=赋值
+:::
+::: tip 深拷贝的方法：
+- 递归拷贝所有层级属性
+- object.parse(object.stringsy())
+- 通过jQuery的extend方法。var a = [1,2],var b = $.extend(true,[],a)
 :::
