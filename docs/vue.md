@@ -8,14 +8,54 @@ tags:
     - vue
 publish: true 
 ---
-#### keep-alive
+### keep-alive
 >keep-alive用于保存组件的渲染状态或避免重新渲染
 ::: tip props
 include：只有名称匹配的组件会缓存 <br/>
 exclude：任何名称不匹配的组件都不会缓存<br/>
 max：最多可以缓存多少组件实例
 :::
-#### watch和computed
+### v-if、v-for不能同时使用的原因
+::: tip
+    v-for的优先级高于v-if，意味着v-if会应用于每个v-for循环中
+    解决方法：1、可先在计算属性中遍历
+    2、v-if移动到容器元素上
+```js
+// 反例
+    <ul>
+        <li v-for="user in users"  v-if="user.isActive" :key="user.id">
+            {{ user.name }}
+        </li>
+    </ul>
+    <ul>
+        <li v-for="user in users" v-if="shouldShowUsers" :key="user.id">
+            {{ user.name }}
+        </li>
+    </ul>
+```
+```js
+    // 好例子
+    <ul>
+        <li v-for="user in activeUsers" :key="user.id">
+            {{ user.name }}
+        </li>
+    </ul>
+    <ul v-if="shouldShowUsers">
+        <li v-for="user in users" :key="user.id">
+            {{ user.name }}
+        </li>
+    </ul>
+    computed: {
+        activeUsers: function () {
+            return this.users.filter(function (user) {
+                return user.isActive
+            })
+        }
+    }
+```
+
+:::
+### watch和computed
 ::: tip
 computed是计算属性，根据依赖的数据动态显示新的计算结果，计算出来的属性不需要调用，可直接在dom中使用<br/>
 watch是侦听器，当需要在数据变化时执行异步或开销较大的操作时，此方法可用
@@ -51,3 +91,10 @@ store.commit('increment')   //参数是方法名
     //action经过store.dispatch方法触发
     //store.dispatch('increment')
 ```
+### vue-router实现原理
+::: tip 三种模式
+1、hash模式
+默认模式，通过路径中的hash值来控制路由跳转，不存在兼容问题
+hash模式实现原理：在正常路径后跟一个#，匹配#后边的路径为前端路由，通过window.onhashchange方法来操控路由改变的时候切换内容<br>
+2、history模式：
+:::
