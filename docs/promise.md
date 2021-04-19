@@ -1,6 +1,6 @@
 ---
-    title: 【JS】Promise详解
-    date: 2021-04-09 15:17:55
+    title: 【JS】Promise
+    date: 2021-04-14 14:30:00
     author: lysan
     categories:
         - 加薪必备之JS篇
