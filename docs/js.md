@@ -328,3 +328,9 @@ promise是微任务，先执行promise
 - object.parse(object.stringsy())
 - 通过jQuery的extend方法。var a = [1,2],var b = $.extend(true,[],a)
 :::
+
+###  :point_right:https缓存
+- 强制缓存：当缓存数据库中已有缓存的数据时，客户端直接从数据库中读取数据。当缓存数据库中没有所请求的数据，客户端才从服务端获取<br>
+强制缓存，请求头包含两个字段：expires和cache-control
+- 协商缓存：客户端先从缓存数据库中获取一个缓存数据的标识，得到标识后请求服务端验证标识是否失效，没有失效客户端会返回304，此时客户端从数据库中读取数据，若失效，则请求服务端获取新数据<br>
+缓存标识：last-modified，if-modidined-since，if-unmodified-since，etag
