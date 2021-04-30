@@ -60,5 +60,43 @@ module.exports = {
     },
     markdown: {
         lineNumbers: true
-    }
+    },
+    plugins: [ //使用插件
+        [
+            'vuepress-plugin-pagation', {
+
+            }
+        ],
+        // [
+        //     "@vuepress-reco/vuepress-plugin-kan-ban-niang",
+        //     {
+        //         theme: ["blackCat"],
+        //         clean: true,
+        //         messageStyle: {
+        //             right: '0px',
+        //             bottom: '0px'
+        //         },
+        //         modelStyle: {
+        //             right: '0',
+        //             bottom: '-40px',
+        //             opacity: '0.9'
+        //         }
+        //     }
+        // ],
+        [
+            "import", {
+                "libraryName": "vue-canvas-effect",
+                "libraryDirectory": "src/components"
+            }
+        ]
+        // ["sakura", { //页面樱花插件
+        //     num: 30, // 默认数量
+        //     show: true,
+        //     zIndex: 2,
+        //     img: {
+        //         replace: false, // false 默认图 true 换图 需要填写httpUrl地址
+        //         httpUrl: 'http://www.zpzpup.com/assets/image/sakura.png' // 绝对路径
+        //     }
+        // }]
+    ],
 }
