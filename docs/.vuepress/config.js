@@ -4,7 +4,7 @@ module.exports = {
     description: "Welcome to my universe",
     repo: 'https://github.com/WangUni/wangUni.github.io',
     base: '/', // 本地运行需要注释（发布时候使用）
-    theme: 'reco',
+    theme: 'reco-ls',
     head: [
         ['link', { rel: 'icon', href: '/favicon.ico' }],
         ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }],
