@@ -637,6 +637,151 @@ directives:{
 <input v-on:keyup.enter="submit">
 ```
 
-### vue2x和vue3x的区别
+<!-- ### vue2x和vue3x的区别
 - vue3x移除了filters过滤器
-- 
+-  -->
+### mixin混入
+1、混入（mixin）用来分发组件中的可复用功能。一个混入对象可包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被混合进入该组件本身的选项。
+```js
+//定义一个混入对象
+var myMinxin = {
+    created(){
+        this.hello
+    },
+    methods:{
+        hello:function(){
+            console.log('hello from mixin')
+        }
+    }
+}
+var Component = Vue.extend({
+    mixins:[myMinxin]
+})
+var component = new Component()  //==> hello from mixin
+```
+2、选项合并
+组件和混入对象包含同名选项时，这些选项将以恰当的方式合并
+- 数据对象将进行递归合并，并在发生冲突时以组将数据优先
+```js
+var mixin = {
+    data:function(){
+        return{
+            message:'hello',
+            foo:'abc'
+        }
+    }
+}
+new Vue({
+    mixins:[mixin],
+    data:function(){
+        return{
+            message:'组件hello',
+            bar:'efd'
+        }
+    },
+    created(){
+        console.log(this.$data)
+        //{message:'组件hello',foo:'abc',bar:'efd'}
+    }
+})
+```
+- 同名钩子函数将合并为一个数组，因此都将被调用。另外，混入对象的钩子将在自身组件钩子函数之前调用
+```js
+var mixin = {
+    created(){
+        console.log('混入对象的钩子函数被调用')
+    }
+}
+new Vue({
+    mixins:[mixin],
+    created(){
+        console.log('组件自身的钩子被调用')
+    }
+})
+// ==> 混入对象的钩子函数被调用 
+// ==> 组件自身的钩子被调用
+```
+- 值为对象的选项，比如methods，components，directives，将被合并为一个对象，当两个对象的键名冲突时，取组件对象的键值对
+```js
+var mixin = {
+    methods:{
+        foo:function{
+            console.log('foo')
+        },
+        conflicting:function(){
+            console.log('from mixin')
+        }
+    }
+}
+var vm = new Vue({
+    mixins:[mixin],
+    methods:{
+        bar:function(){
+            console.log('bar')
+        },
+        conflicting:function(){
+            console.log('from self')
+        }
+    }
+})
+vm.foo() //==> foo
+vm.bar() //==> bar
+vm.conflicting() // ==> from self
+
+```
+
+### 全局混入
+混入可以进行全局注册，使用全局混入将影响每一个之后创建的vue实例。
+```js
+//为自定义的myOption注入一个处理器
+Vue.mixin({
+    created(){
+        var myOption = this.$options.myOption;
+        if(myOption){
+            console.log(myOption)
+        }
+    }
+})
+var vm = new Vue({
+    myOption:'hello'
+})
+// ==> hello
+```
+
+### 自定义指令
+1、注册一个全局自定义指令 v-focus
+```js
+Vue.directive('focus',{
+    //当被绑定的元素插入到DOM中时
+    inserted:function(el){
+        el.focus();
+    }
+})
+```
+2、注册一个局部指令
+```js
+new Vue({
+    directive:{
+        focus:{
+            inserted:function(el){
+                el.focus()
+            }
+        }
+    }
+})
+//使用
+<input v-focus>
+```
+3、指令对象中的钩子函数
+::: tip
+bind：只调用一次，指令第一次绑定到元素时调用。可以进行一次性的初始化设置
+inserted：被绑定元素插入父节点时调用（仅保证父节点存在，但不一定已被插入文档中）
+update：所在组件的VNode更新时调用，可能发生在其子VNode更新之前。
+:::
+
+### Vue.extend(option)
+- 基础vue构造器
+```js
+<div id="mount-point"></div>
+var Profile = Vue.extend
+```
