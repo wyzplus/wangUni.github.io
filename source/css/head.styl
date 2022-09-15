@@ -1,0 +1,39 @@
+#page-header
+  width: 1400px
+  margin: 0 auto
+
+  #nav 
+    #blog_name
+      flex: none
+    #menus
+      display: flex
+      flex-direction: row-reverse
+      flex: 1
+      .site-page:not(.child):after
+        display: none
+      .menus_items
+        flex: 1
+        text-align: center
+        .menus_item
+          padding: 0 8px 3px
+          border-radius: 5px
+          cursor: pointer
+          &:hover 
+            background-color: var(--text-bg-hover)
+            .menus_item_child
+              display: flex
+              justify-content: space-between
+              &>li
+                border-radius: 5px
+
+
+      #search-button 
+        padding: 0 8px 3px
+        border-radius: 5px
+        cursor: pointer
+        &:hover 
+          background-color: var(--text-bg-hover)
+    
+
+.layout
+  max-width: 1400px
