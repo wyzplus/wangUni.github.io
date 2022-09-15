@@ -1,0 +1,45 @@
+#page-header {
+  width: 1400px;
+  margin: 0 auto;
+}
+#page-header #nav #blog_name {
+  flex: none;
+}
+#page-header #nav #menus {
+  display: flex;
+  flex-direction: row-reverse;
+  flex: 1;
+}
+#page-header #nav #menus .site-page:not(.child):after {
+  display: none;
+}
+#page-header #nav #menus .menus_items {
+  flex: 1;
+  text-align: center;
+}
+#page-header #nav #menus .menus_items .menus_item {
+  padding: 0 8px 3px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#page-header #nav #menus .menus_items .menus_item:hover {
+  background-color: var(--text-bg-hover);
+}
+#page-header #nav #menus .menus_items .menus_item:hover .menus_item_child {
+  display: flex;
+  justify-content: space-between;
+}
+#page-header #nav #menus .menus_items .menus_item:hover .menus_item_child>li {
+  border-radius: 5px;
+}
+#page-header #nav #menus #search-button {
+  padding: 0 8px 3px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#page-header #nav #menus #search-button:hover {
+  background-color: var(--text-bg-hover);
+}
+.layout {
+  max-width: 1400px;
+}
