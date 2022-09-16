@@ -1,44 +1,81 @@
 #page-header {
-  width: 1400px;
+  width: 100%;
   margin: 0 auto;
 }
-#page-header #nav #blog_name {
-  flex: none;
-}
-#page-header #nav #menus {
+#page-header #nav #nav_group {
+  max-width: 1400px;
+  width: 100%;
   display: flex;
-  flex-direction: row-reverse;
-  flex: 1;
+  padding: 0 15px;
+  margin: 0 auto;
 }
-#page-header #nav #menus .site-page:not(.child):after {
-  display: none;
+#page-header #nav #nav_group #blog_name {
+  width: 90px;
+  flex: none;
+  position: relative;
 }
-#page-header #nav #menus .menus_items {
+#page-header #nav #nav_group #blog_name #site-name {
+  width: 100%;
+  opacity: 1;
+  position: absolute;
+  z-index: 98;
+  text-shadow: none;
+  transition: 0.3s;
+}
+#page-header #nav #nav_group #blog_name #site-name-home {
+  position: absolute;
+  z-index: 99;
+  opacity: 0;
+  width: 100%;
+  border-radius: 5px;
+  text-align: center;
+  background-color: var(--text-bg-hover);
+  transition: 0.3s;
+}
+#page-header #nav #nav_group #blog_name:hover #site-name {
+  opacity: 0;
+}
+#page-header #nav #nav_group #blog_name:hover #site-name-home {
+  opacity: 1;
+}
+#page-header #nav #nav_group #menus {
   flex: 1;
   text-align: center;
 }
-#page-header #nav #menus .menus_items .menus_item {
+#page-header #nav #nav_group .site-page:not(.child):after {
+  display: none;
+}
+#page-header #nav #nav_group .menus_items .menus_item {
   padding: 0 8px 3px;
   border-radius: 5px;
   cursor: pointer;
 }
-#page-header #nav #menus .menus_items .menus_item:hover {
+#page-header #nav #nav_group .menus_items .menus_item:hover {
   background-color: var(--text-bg-hover);
 }
-#page-header #nav #menus .menus_items .menus_item:hover .menus_item_child {
+#page-header #nav #nav_group .menus_items .menus_item:hover .menus_item_child {
   display: flex;
   justify-content: space-between;
+  padding: 5px;
 }
-#page-header #nav #menus .menus_items .menus_item:hover .menus_item_child>li {
+#page-header #nav #nav_group .menus_items .menus_item:hover .menus_item_child>li {
   border-radius: 5px;
 }
-#page-header #nav #menus #search-button {
+#page-header #nav #nav_group .menus_items .menus_item:hover .menus_item_child>li>a {
+  padding: 4px 16px 6px;
+}
+#page-header #nav #nav_group #search-button {
   padding: 0 8px 3px;
   border-radius: 5px;
   cursor: pointer;
 }
-#page-header #nav #menus #search-button:hover {
+#page-header #nav #nav_group #search-button:hover {
   background-color: var(--text-bg-hover);
+}
+#page-header #nav .site-page {
+  padding: 0 8px 6px;
+  font-size: 16px;
+  font-weight: 700;
 }
 .layout {
   max-width: 1400px;
