@@ -7,14 +7,14 @@ title: CodePlus
 subtitle: ''
 description: '技术记录与分享'
 keywords: '技术记录与分享'
-author: Uni 
+author: wyz 
 language: zh-CN
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
-permalink: :year/:month/:day/:title/
+url: http://www.wyz.plus
+permalink: :year/:title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -106,4 +106,4 @@ deploy:
   repo: https://github.com/wanguni/wangUni.github.io
   branch: gh-pages
   token: 36aed321bc682ad532b167d2df948c97
-  
+ 
