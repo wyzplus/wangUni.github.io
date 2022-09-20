@@ -297,19 +297,19 @@ document.addEventListener('DOMContentLoaded', function () {
 				const isDown = scrollDirection(currentTop);
 				if (currentTop > 56) {
 					if (isDown) {
-						// if ($header.classList.contains('nav-visible')) $header.classList.remove('nav-visible')
+						if ($header.classList.contains('nav-visible')) $header.classList.remove('nav-visible');
 						if (isChatBtnShow && isChatShow === true) {
 							chatBtnHide();
 							isChatShow = false;
 						}
 					} else {
-						// if (!$header.classList.contains('nav-visible')) $header.classList.add('nav-visible')
+						if (!$header.classList.contains('nav-visible')) $header.classList.add('nav-visible');
 						if (isChatBtnHide && isChatShow === false) {
 							chatBtnShow();
 							isChatShow = true;
 						}
 					}
-					// $header.classList.add('nav-fixed')
+					$header.classList.add('nav-fixed');
 					if (window.getComputedStyle($rightside).getPropertyValue('opacity') === '0') {
 						$rightside.style.cssText = 'opacity: 0.8; transform: translateX(-58px)';
 					}
