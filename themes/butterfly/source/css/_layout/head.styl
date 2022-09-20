@@ -6,6 +6,7 @@
   background-size: cover
   background-repeat: no-repeat
   transition: all .5s
+  margin: 0 auto
 
   &:not(.not-top-img):before
     position: absolute
@@ -130,12 +131,12 @@
 
   &.nav-fixed
     #nav
-      // position: fixed
-      // top: -60px
-      // z-index: 91
-      // background: rgba(255, 255, 255, .8)
-      // box-shadow: 0 5px 6px -5px alpha($grey, .6)
-      // transition: transform .2s ease-in-out, opacity .2s ease-in-out
+      position: fixed
+      top: -60px
+      z-index: 91
+      background: rgba(255, 255, 255, .8)
+      box-shadow: 0 5px 6px -5px alpha($grey, .6)
+      transition: transform .2s ease-in-out, opacity .2s ease-in-out
 
       a,
       #site-name,
@@ -148,8 +149,8 @@
 
   &.nav-visible
     #nav
-      // transition: all .5s
-      // transform: translate3d(0, 100%, 0)
+      transition: all .5s
+      transform: translate3d(0, 100%, 0)
 
     & + .layout
       & > .aside-content > .sticky_layout
@@ -235,7 +236,7 @@
         display: none
 
 #nav
-  position: fixed
+  position: absolute
   top: 0
   z-index: 90
   display: flex
@@ -247,6 +248,13 @@
   opacity: 0
   transition: all .5s
 
+  #nav_group
+    max-width: 1400px
+    width: 100%
+    display: flex
+    padding: 0 15px
+    margin: 0 auto
+
   +maxWidth768()
     padding: 0 16px
 
@@ -254,8 +262,33 @@
     opacity: 1
 
   #blog_name
-    flex: 1
+    width: 90px
+    flex: none
+    position: relative
+    #site-name
+      width: 100%
+      opacity: 1
+      position absolute
+      z-index 98
+      transition: .3s
+      font-weight: bold
+      cursor: pointer
+    #site-name-home
+      position: absolute
+      z-index 99
+      opacity: 0 
+      width: 100%
+      border-radius: 5px
+      text-align: center
+      background-color: var(--text-bg-hover)
+      transition: .3s
 
+    &:hover
+      #site-name
+        opacity: 0
+      #site-name-home
+        opacity: 1
+        
   #toggle-menu
     display: none
     padding: 2px 0 0 6px
@@ -270,10 +303,14 @@
     &:hover
       color: var(--white)
 
-  #site-name
-    text-shadow: 2px 2px 4px rgba($dark-black, .15)
-    font-weight: bold
-    cursor: pointer
+
+
+  #menus
+    flex: 1
+    text-align: center
+
+  .site-page:not(.child):after
+    display: none
 
   .menus_items
     display: inline
@@ -281,11 +318,21 @@
     .menus_item
       position: relative
       display: inline-block
-      padding: 0 0 0 14px
+      padding: 0 8px 3px
+      border-radius: 5px
+      cursor: pointer
 
       &:hover
+        background-color: var(--text-bg-hover)
+
         .menus_item_child
-          display: block
+          display: flex
+          justify-content: space-between
+          padding: 5px
+          &>li
+            border-radius: 5px
+            &>a
+              padding: 4px 16px 6px
 
         & > a > i:last-child
           transform: rotate(180deg)
@@ -350,14 +397,20 @@
 
   #search-button
     display: inline
-    padding: 0 0 0 14px
+    padding: 0 8px 3px
+    border-radius: 5px
+    cursor: pointer
+    &:hover 
+      background-color: var(--text-bg-hover)
 
   .site-page
     position: relative
-    padding-bottom: 6px
     text-shadow: 1px 1px 2px rgba($dark-black, .3)
-    font-size: .78em
+    // font-size: .78em
     cursor: pointer
+    padding: 0 8px 6px  
+    font-size: 16px
+    font-weight: 700
 
     &:not(.child)
       &:after

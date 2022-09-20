@@ -7,9 +7,9 @@ menu:
   # 时间轴: /archives/ 
   标  签: /tags/ 
   分  类: /categories/ 
-  # 列  表:
-    # 音  乐: /music/ || fas fa-music
-    # 视  频: /movies/ || fas fa-video
+  列  表:
+    音  乐: /music/ || fas fa-music
+    视  频: /movies/ || fas fa-video
   # 链  接: /link/ 
   # 关  于: /about/ 
 
@@ -856,7 +856,7 @@ css_prefix: true
 # 插入代码到头部 </head> 之前 和 底部 </body> 之前
 inject:
   head:
-    - <link rel="stylesheet" href="/css/head.css?v1">
+    # - <link rel="stylesheet" href="/css/head.css?v1">
   bottom:
     # - <script src="xxxx"></script>
 
