@@ -6,14 +6,14 @@
   background-size: cover
   background-repeat: no-repeat
   transition: all .5s
-  margin: 0 auto
 
-  &:not(.not-top-img):before
-    position: absolute
-    width: 100%
-    height: 100%
-    background-color: alpha($dark-black, .3)
-    content: ''
+  if hexo-config('mask.header')
+    &:not(.not-top-img):before
+      position: absolute
+      width: 100%
+      height: 100%
+      background-color: var(--mark-bg)
+      content: ''
 
   // index
   &.full_page
@@ -98,9 +98,6 @@
     +maxWidth768()
       height: 360px
 
-    &:before
-      background-color: alpha($dark-black, .5)
-
   #post-info
     position: absolute
     bottom: 100px
@@ -125,7 +122,8 @@
       background: rgba(255, 255, 255, .8)
       box-shadow: 0 5px 6px -5px rgba(133, 133, 133, .6)
 
-      a
+      a,
+      .site-name
         color: var(--font-color)
         text-shadow: none
 
@@ -138,8 +136,16 @@
       box-shadow: 0 5px 6px -5px alpha($grey, .6)
       transition: transform .2s ease-in-out, opacity .2s ease-in-out
 
+      #blog-info
+        color: var(--font-color)
+
+        &:hover
+          color: $light-blue
+
+        .site-name
+          text-shadow: none
+
       a,
-      #site-name,
       #toggle-menu
         color: var(--font-color)
         text-shadow: none
@@ -147,7 +153,12 @@
         &:hover
           color: $light-blue
 
-  &.nav-visible
+    &.fixed
+      #nav
+        top: 0
+        transition: all .5s
+
+  &.nav-visible:not(.fixed)
     #nav
       transition: all .5s
       transform: translate3d(0, 100%, 0)
@@ -156,6 +167,19 @@
       & > .aside-content > .sticky_layout
         top: 70px
         transition: top .5s
+
+  &.fixed
+    #nav
+      position: fixed
+
+    & + .layout
+      & > .aside-content > .sticky_layout
+        top: 70px
+        transition: top .5s
+
+      #card-toc
+        .toc-content
+          max-height: calc(100vh - 170px)
 
 #page
   h1.page-title
@@ -248,47 +272,22 @@
   opacity: 0
   transition: all .5s
 
-  #nav_group
-    max-width: 1400px
-    width: 100%
-    display: flex
-    padding: 0 15px
-    margin: 0 auto
-
   +maxWidth768()
     padding: 0 16px
 
   &.show
     opacity: 1
 
-  #blog_name
-    width: 90px
-    flex: none
-    position: relative
-    #site-name
-      width: 100%
-      opacity: 1
-      position absolute
-      z-index 98
-      transition: .3s
-      font-weight: bold
-      cursor: pointer
-    #site-name-home
-      position: absolute
-      z-index 99
-      opacity: 0 
-      width: 100%
-      border-radius: 5px
-      text-align: center
-      background-color: var(--text-bg-hover)
-      transition: .3s
+  #blog-info
+    flex: 1
+    color: var(--light-grey)
+    @extend .limit-one-line
 
-    &:hover
-      #site-name
-        opacity: 0
-      #site-name-home
-        opacity: 1
-        
+    .site-icon
+      margin-right: 6px
+      height: 36px
+      vertical-align: middle
+
   #toggle-menu
     display: none
     padding: 2px 0 0 6px
@@ -303,14 +302,9 @@
     &:hover
       color: var(--white)
 
-
-
-  #menus
-    flex: 1
-    text-align: center
-
-  .site-page:not(.child):after
-    display: none
+  .site-name
+    text-shadow: 2px 2px 4px rgba($dark-black, .15)
+    font-weight: bold
 
   .menus_items
     display: inline
@@ -318,21 +312,11 @@
     .menus_item
       position: relative
       display: inline-block
-      padding: 0 8px
-      border-radius: 5px
-      cursor: pointer
+      padding: 0 0 0 14px
 
       &:hover
-        background-color: var(--text-bg-hover)
-
         .menus_item_child
-          display: flex
-          justify-content: space-between
-          padding: 5px
-          &>li
-            border-radius: 5px
-            &>a
-              padding: 4px 16px 6px
+          display: block
 
         & > a > i:last-child
           transform: rotate(180deg)
@@ -397,20 +381,14 @@
 
   #search-button
     display: inline
-    padding: 0 8px 3px
-    border-radius: 5px
-    cursor: pointer
-    &:hover 
-      background-color: var(--text-bg-hover)
+    padding: 0 0 0 14px
 
   .site-page
     position: relative
+    padding-bottom: 6px
     text-shadow: 1px 1px 2px rgba($dark-black, .3)
-    // font-size: .78em
+    font-size: .78em
     cursor: pointer
-    padding: 0 8px 6px  
-    font-size: .9em
-    font-weight: 700
 
     &:not(.child)
       &:after

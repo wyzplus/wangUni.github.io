@@ -107,3 +107,7 @@ deploy:
   branch: gh-pages
   token: 36aed321bc682ad532b167d2df948c97
  
+algolia:
+  applicationID: 'X7FOR0CLMZ'
+  apiKey: '25582ff48a433f3715ddaed9643d7921'
+  indexName: '...'
